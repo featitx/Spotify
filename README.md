@@ -51,9 +51,6 @@ Or using Yarn:
 yarn run dev 
 ```
 
-### 4. Open in Browser
-
-After running the command, open **http://localhost:3000/** in your browser to access the application.
 
 ## 🎉 Enjoy Your Music Player!
 
