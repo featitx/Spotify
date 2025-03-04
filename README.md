@@ -42,13 +42,13 @@ yarn install
 ### 3. Start the Development Server
 
 ```sh
-npm start
+npm run dev
 ```
 
 Or using Yarn:
 
 ```sh
-yarn start
+yarn run dev 
 ```
 
 ### 4. Open in Browser
