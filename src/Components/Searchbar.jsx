@@ -1,20 +1,24 @@
 import React from 'react'
+import { Search } from 'lucide-react';
+import { useMusic } from '../Context/MusicContext';
+import '../assets/componentStyles/SearchBar.scss'
 
 const Searchbar = () => {
-  return (
-    <>
-   <div className="search-container">
-   <div className="search-box">
-        <input
-          type="text"
-          placeholder="Search for a song..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-   </div>
-    </>
-  )
+    const { searchTerm, setSearchTerm } = useMusic();
+
+    return (
+    <div className="search-container">
+        <div className="search-box">
+            <input
+                type="text"
+                placeholder="Search Song, Artist"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Search size={24} />
+        </div>
+    </div>
+    )
 }
 
-export default Searchbar ; 
+export default Searchbar;

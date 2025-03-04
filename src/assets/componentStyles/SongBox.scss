@@ -1,0 +1,114 @@
+.song-container {
+  display: flex;
+  font-family: 'Inter', sans-serif;
+  align-items: center;
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  width: 100%;
+  max-width: 432px;
+
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+
+  .artist-profile {
+      flex-shrink: 0;
+      margin-right: 16px; // Added spacing after profile
+      
+      img {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
+      }
+  }
+
+  .info {
+      flex: 1;
+      min-width: 0;
+      margin-right: 16px; // Space before duration
+
+      .title {
+          font-weight: 500;
+          font-size: 18px;
+          color: #FFFFFF;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-bottom: 4px;
+      }
+
+      .artist {
+          font-weight: 400;
+          font-size: 14px;
+          color: #B3B3B3;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+  }
+
+  .duration {
+      font-size: 18px;
+      color: #B3B3B3;
+      
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .song-container {
+      padding: 12px;
+      gap: 12px;
+      width: calc(3*100%);
+      
+
+      .artist-profile {
+          margin-right: 12px;
+          
+          img {
+              width: 40px;
+              height: 40px;
+          }
+      }
+
+      .info {
+          .title {
+              font-size: 16px;
+          }
+
+          .artist {
+              font-size: 14px;
+          }
+      }
+
+      .duration {
+          font-size: 16px;
+      }
+  }
+}
+
+@media (max-width: 480px) {
+  .song-container {
+      gap: 8px;
+      padding: 8px;
+      width: calc(3*100%);
+
+      .artist-profile {
+          margin-right: 8px;
+          
+          img {
+              width: 32px;
+              height: 32px;
+          }
+      }
+
+      .info {
+          .title {
+              font-size: 16px;
+          }
+      }
+  }
+}

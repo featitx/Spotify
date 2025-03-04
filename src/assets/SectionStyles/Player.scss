@@ -1,0 +1,320 @@
+.player-wrapper {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+
+
+  .music-player {
+    color: #fff;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Inter;
+    margin-top: 90px;
+    margin-bottom: px;
+   
+
+    .song-info {
+      text-align: left;
+      margin-bottom: 24px;
+      width: 100%;
+
+      .song-title {
+        font-weight: 700;
+        font-size: clamp(20px, 5vw, 32px);
+        margin-bottom: 8px;
+      }
+
+      .artist-name {
+        color: #aaa;
+        font-weight: 400;
+        font-size: clamp(12px, 3vw, 16px);
+        line-height: 1.5;
+      }
+    }
+
+    .album-cover {
+      margin-bottom: 20px;
+      width: 100%;
+
+      .cover-art {
+        width: 100%;
+        height: auto;
+        max-width: 480px;
+        border-radius: 8px;
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background-color: #444;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      cursor: pointer;
+  
+
+      .progress-fill {
+        height: 100%;
+        background-color: #fff;
+        border-radius: 2px;
+      }
+
+ 
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0 5px;
+
+      .control-btn {
+        background: none;
+        border: none;
+        color: #aaa;
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          color: #fff;
+        }
+
+        &.more,
+        &.volume {
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          height: clamp(36px, 10vw, 48px);
+          width: clamp(36px, 10vw, 48px);
+        }
+
+        &.play {
+          background-color: #fff;
+          color: #000;
+          border-radius: 50%;
+          width: clamp(40px, 12vw, 48px);
+          height: clamp(40px, 12vw, 48px);
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            margin-left: 1px;
+          }
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        &.prev,
+        &.next {
+          margin: 0 4px;
+        }
+
+        svg {
+          width: clamp(18px, 5vw, 24px);
+          height: clamp(18px, 5vw, 24px);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+    .music-player {
+      margin-top: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 5px;
+    .music-player {
+      margin-top: 0;
+      .player-wrapper {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+
+  .music-player {
+    color: #fff;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Inter;
+    margin-top: 90px;
+
+    .song-info {
+      text-align: left;
+      margin-bottom: 24px;
+      width: 100%;
+
+      .song-title {
+        font-weight: 700;
+        font-size: clamp(20px, 5vw, 32px);
+        margin-bottom: 8px;
+      }
+
+      .artist-name {
+        color: #aaa;
+        font-weight: 400;
+        font-size: clamp(12px, 3vw, 16px);
+        line-height: 1.5;
+      }
+    }
+
+    .album-cover {
+      margin-bottom: 20px;
+      width: 100%;
+
+      .cover-art {
+        width: 100%;
+        height: auto;
+        max-width: 480px;
+        border-radius: 8px;
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    .progress-bar {
+      width: 100%;
+      background-color: #444;
+      border-radius: 16px;
+      margin-bottom: 24px; 
+
+      .progress-fill {
+        height: 100%;
+        background-color: #fff;
+        border-radius: 2px;
+      }
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0 5px;
+
+      .control-btn {
+        background: none;
+        border: none;
+        color: #aaa;
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          color: #fff;
+        }
+
+        &.more,
+        &.volume {
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          height: clamp(36px, 10vw, 48px);
+          width: clamp(36px, 10vw, 48px);
+        }
+
+        &.play {
+          background-color: #fff;
+          color: #000;
+          border-radius: 50%;
+          width: clamp(40px, 12vw, 48px);
+          height: clamp(40px, 12vw, 48px);
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            margin-left: 1px;
+          }
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        &.prev,
+        &.next {
+          margin: 0 4px;
+        }
+
+        svg {
+          width: clamp(18px, 5vw, 24px);
+          height: clamp(18px, 5vw, 24px);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+    .music-player {
+      margin-top: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 5px;
+    .music-player {
+      margin-top: 0;
+      
+      .song-info {
+        margin-bottom: 16px;
+      }
+
+      .album-cover {
+        margin-bottom: 16px;
+      }
+
+      .progress-bar {
+        margin-bottom: 16px;
+      }
+
+      .controls {
+        padding: 0 2px;
+      }
+    }
+  }
+}
+
+      .song-info {
+        margin-bottom: 16px;
+      }
+
+      .album-cover {
+        margin-bottom: 16px;
+      }
+
+      .progress-bar {
+        margin-bottom: 16px;
+      }
+
+      .controls {
+        padding: 0 2px;
+      }
+    }
+  }
+}

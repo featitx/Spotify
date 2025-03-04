@@ -1,12 +1,16 @@
-import React from 'react'
-import Listview from './Sections/Listview'
+import './App.css';
+import Home from './Pages/Home.jsx';
+import { MusicProvider } from './Context/MusicContext.jsx';
 
-const App = () => {
+
+
+function App() {
   return (
-    <>
-    <Listview/>
-    </>
-  )
+  <MusicProvider>
+    <Home />
+  </MusicProvider>
+  );
 }
 
-export default App
+
+export default App;
