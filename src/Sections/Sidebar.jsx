@@ -1,6 +1,6 @@
 import React from 'react'
-import profile from '../assets/Images/profile.png'; 
-import Vector from '../assets/Images/Vector.png'
+import profile from "@assets/Images/profile.png";
+import Vector from '@assets/Images/Vector.png'
 import '../assets/SectionStyles/Sidebar.scss'
 
 const Sidebar = () => {
