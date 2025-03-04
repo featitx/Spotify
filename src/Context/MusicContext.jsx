@@ -84,8 +84,6 @@ export const MusicProvider = ({ children }) => {
     audioElement,
     handlePrevious,
     handleNext,
-    activeTab,
-    setActiveTab,
 
   };
 
