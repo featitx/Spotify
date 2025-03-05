@@ -36,10 +36,10 @@
   }
 }
 
-/* Tablet */
+
 @media (max-width: 768px) {
   .search-container {
-    margin-bottom: 16px;
+    margin: 15px 18%; 
     width: calc(3*100%);
 
     .search-box {
@@ -60,12 +60,12 @@
   }
 }
 
-/* Mobile */
+
 @media (max-width: 480px) {
   .search-container {
     
     padding: 0 8px;
-    margin: 15px 10%; 
+   
 
     .search-box {
       max-width: 100%;
