@@ -8,10 +8,10 @@ const Sidebar = () => {
    <>
    <div className="sidebar-container">
     <div className="logo">
-    <img src={Vector} alt="" />
+    <img src={Vector} alt="logo" />
     </div>
     <div className="user-profile">
-     <img src={profile} alt="" />
+     <img src={profile} alt="user" />
     </div>
    </div>
    </>

@@ -29,7 +29,7 @@ const Player = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [seekingProgress, setSeekingProgress] = useState(0);
 
-  // Sync seeking progress with actual progress
+  
   useEffect(() => {
     if (!isSeeking) {
       setSeekingProgress(progress);
@@ -54,10 +54,10 @@ const Player = () => {
       const pos = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
       const newProgress = pos * 100;
       
-      // Update visual progress
+      
       setSeekingProgress(newProgress);
       
-      // Update audio position after slight delay
+     
       const timeoutId = setTimeout(() => {
         if (isSeeking) {
           handleSeek(pos * audioElement.duration);
@@ -121,7 +121,7 @@ const Player = () => {
             <MoreHorizontal size={24} strokeWidth={1.5} />
           </button>
           <button className="control-btn prev" onClick={handlePrevious}>
-            <SkipBack size={24} strokeWidth={1.5} fill="none" />
+            <SkipBack size={24} strokeWidth={1.5} />
           </button>
           <button className="control-btn play" onClick={playPause}>
             {isPlaying ? (
@@ -131,7 +131,7 @@ const Player = () => {
             )}
           </button>
           <button className="control-btn next" onClick={handleNext}>
-            <SkipForward size={24} strokeWidth={1.5} fill="none" />
+            <SkipForward size={24} strokeWidth={1.5} />
           </button>
           <button className="control-btn volume" onClick={handleMuteToggle}>
             {isMuted ? (

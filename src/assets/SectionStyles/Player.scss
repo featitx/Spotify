@@ -112,6 +112,8 @@
 
           svg {
             margin-left: 1px;
+            fill: #000;
+            
           }
 
           &:hover {
@@ -127,6 +129,7 @@
         svg {
           width: clamp(18px, 5vw, 24px);
           height: clamp(18px, 5vw, 24px);
+          fill: currentColor;
         }
       }
     }
