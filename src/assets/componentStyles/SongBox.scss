@@ -15,7 +15,7 @@
 
   .artist-profile {
       flex-shrink: 0;
-      margin-right: 16px; 
+      margin-right: 16px; // Added spacing after profile
       
       img {
           width: 48px;
@@ -28,7 +28,7 @@
   .info {
       flex: 1;
       min-width: 0;
-      margin-right: 16px;
+      margin-right: 16px; // Space before duration
 
       .title {
           font-weight: 500;
@@ -57,7 +57,7 @@
   }
 }
 
-
+// Mobile responsive
 @media (max-width: 768px) {
   .song-container {
       padding: 12px;
