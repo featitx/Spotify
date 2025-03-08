@@ -100,7 +100,7 @@ const Player = () => {
             className="cover-art"
           />
         </div>
-        
+   {isPlaying ? (
         <div 
           className="progress-bar" 
           ref={progressBarRef}
@@ -115,7 +115,9 @@ const Player = () => {
             style={{ width: `${isSeeking ? seekingProgress : progress}%` }}
           ></div>
         </div>
-        
+ ) : ''}
+
+{isPlaying ? (  
         <div className="controls">
           <button className="control-btn more">
             <MoreHorizontal size={24} strokeWidth={1.5} />
@@ -141,7 +143,8 @@ const Player = () => {
             )}
           </button>
         </div>
-      </div>
+        ) : ''}
+      </div>  
     </div>
   );
 };
