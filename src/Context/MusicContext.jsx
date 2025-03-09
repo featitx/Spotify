@@ -11,6 +11,10 @@ export const MusicProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('For You');
   const [audioElement, setAudioElement] = useState(new Audio());
+  const [hideControls , setHideControls] = useState(true); 
+
+
+
 
   useEffect(() => {
     fetch('https://cms.samespace.com/items/songs')
@@ -84,7 +88,8 @@ export const MusicProvider = ({ children }) => {
     audioElement,
     handlePrevious,
     handleNext,
-
+    hideControls, 
+    setHideControls, 
   };
 
   return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;

@@ -6,14 +6,14 @@ import  {useMusic} from '../Context/MusicContext'
 
 const SongContainer = ({ song }) => {
   
-  const { setCurrentSong, audioElement, isPlaying,  setIsPlaying , currentSong } = useMusic();
+  const { setCurrentSong, audioElement, isPlaying,  setIsPlaying , currentSong , hideControls, setHideControls} = useMusic();
 
   const [formattedDuration, setFormattedDuration] = useState('0:00');
 
 
 
   useEffect(() => {
-    // Create a temporary audio element to get duration
+
     const tempAudio = new Audio(song.url);
     
     const handleLoadedMetadata = () => {
@@ -46,17 +46,20 @@ const SongContainer = ({ song }) => {
         setIsPlaying(false);
       }
     } else {
-      // New song, play it and set state
       setCurrentSong(song);
       audioElement.src = song.url;
       audioElement.play();
       setIsPlaying(true);
     }
+
+    setHideControls(false); 
   };
 
 
+ 
   return (
-    <div className="song-container" onClick={handlePlay}>
+    <div className="song-container" onClick={() => { handlePlay();}}
+>
       <div className="artist-profile">
         <img 
           src={`https://cms.samespace.com/assets/${song.cover}`} 
