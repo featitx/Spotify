@@ -22,7 +22,7 @@ const Player = () => {
     handleNext,
     handlePrevious,
     audioElement,
-    hideControls , 
+    hideControls, 
     setHideControls, 
   } = useMusic();
   
@@ -31,58 +31,58 @@ const Player = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [seekingProgress, setSeekingProgress] = useState(0);
 
-  
   useEffect(() => {
     if (!isSeeking) {
       setSeekingProgress(progress);
     }
   }, [progress, isSeeking]);
 
-  const handleProgressClick = (e) => {
+  // Calculate position based on input event (works for both mouse and touch)
+  const calculatePosition = (e) => {
+    if (!progressBarRef.current || !audioElement) return 0;
+    
     const rect = progressBarRef.current.getBoundingClientRect();
-    const pos = (e.clientX - rect.left) / rect.width;
-    const newTime = pos * audioElement.duration;
-    handleSeek(newTime);
+    const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const pos = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
+    return pos;
   };
 
-  const handleMouseDown = (e) => {
+  // Unified handler for both mouse and touch events
+  const handleInteractionStart = (e) => {
     setIsSeeking(true);
-    handleProgressClick(e);
+    const pos = calculatePosition(e);
+    setSeekingProgress(pos * 100);
   };
 
-  const handleMouseMove = (e) => {
-    if (isSeeking && progressBarRef.current) {
-      const rect = progressBarRef.current.getBoundingClientRect();
-      const pos = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-      const newProgress = pos * 100;
-      
-      
-      setSeekingProgress(newProgress);
-      
-     
-      const timeoutId = setTimeout(() => {
-        if (isSeeking) {
-          handleSeek(pos * audioElement.duration);
-        }
-      }, 100);
-      
-      return () => clearTimeout(timeoutId);
+  const handleInteractionMove = (e) => {
+    if (isSeeking) {
+      const pos = calculatePosition(e);
+      setSeekingProgress(pos * 100);
     }
   };
 
-  const handleMouseUp = (e) => {
-    if (isSeeking) {
+  const handleInteractionEnd = (e) => {
+    if (isSeeking && audioElement) {
       setIsSeeking(false);
-      const rect = progressBarRef.current.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
+      const pos = calculatePosition(e);
+      handleSeek(pos * audioElement.duration);
+    }
+  };
+
+  // Handle clicks without dragging
+  const handleProgressClick = (e) => {
+    if (audioElement) {
+      const pos = calculatePosition(e);
       handleSeek(pos * audioElement.duration);
     }
   };
 
   const handleMuteToggle = () => {
-    const newMutedState = !isMuted;
-    setIsMuted(newMutedState);
-    audioElement.muted = newMutedState;
+    if (audioElement) {
+      const newMutedState = !isMuted;
+      setIsMuted(newMutedState);
+      audioElement.muted = newMutedState;
+    }
   };
 
   return (
@@ -102,23 +102,26 @@ const Player = () => {
             className="cover-art"
           />
         </div>
-       { hideControls ? "" : (
+       {!hideControls && (
         <div 
           className="progress-bar" 
           ref={progressBarRef}
           onClick={handleProgressClick}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={() => setIsSeeking(false)}
+          onMouseDown={handleInteractionStart}
+          onTouchStart={handleInteractionStart}
+          onMouseMove={handleInteractionMove}
+          onTouchMove={handleInteractionMove}
+          onMouseUp={handleInteractionEnd}
+          onTouchEnd={handleInteractionEnd}
+          onMouseLeave={() => isSeeking && setIsSeeking(false)}
         >
           <div 
             className="progress-fill" 
             style={{ width: `${isSeeking ? seekingProgress : progress}%` }}
           ></div>
         </div>
-        ) }
-         { hideControls ? "" : (
+       )}
+       {!hideControls && (
         <div className="controls">
           <button className="control-btn more">
             <MoreHorizontal size={24} strokeWidth={1.5} />
@@ -144,7 +147,7 @@ const Player = () => {
             )}
           </button>
         </div>
-        )}
+       )}
       </div>
     </div>
   );
